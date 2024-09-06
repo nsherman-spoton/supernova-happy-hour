@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/drivers/gpio"
@@ -11,7 +12,7 @@ import (
 
 func main() {
 	natsAdaptor := nats.NewAdaptor("localhost:4222", 1)
-	firmataAdaptor := firmata.NewAdaptor()
+	firmataAdaptor := firmata.NewAdaptor(os.Getenv("ARDUINO_PATH"))
 	goodLED := gpio.NewLedDriver(firmataAdaptor, "12")
 	evilLED := gpio.NewLedDriver(firmataAdaptor, "13")
 
