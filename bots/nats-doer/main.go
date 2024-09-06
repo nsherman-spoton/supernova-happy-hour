@@ -57,7 +57,7 @@ func main() {
 
 	robot := gobot.NewRobot("nats-doer",
 		[]gobot.Connection{natsAdaptor, firmataAdaptor},
-		[]gobot.Device{led},
+		[]gobot.Device{goodLED, evilLED},
 		work,
 	)
 
