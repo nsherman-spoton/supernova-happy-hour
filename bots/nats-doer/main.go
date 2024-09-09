@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	natsAdaptor := nats.NewAdaptor("localhost:4222", 1)
+	natsAdaptor := nats.NewAdaptorWithAuth(os.Getenv("NATS_URL"), 1, os.Getenv("NATS_USER"), os.Getenv("NATS_PASS"))
 	firmataAdaptor := firmata.NewAdaptor(os.Getenv("ARDUINO_PATH"))
 	goodLED := gpio.NewLedDriver(firmataAdaptor, "12")
 	evilLED := gpio.NewLedDriver(firmataAdaptor, "13")
